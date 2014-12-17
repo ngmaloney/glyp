@@ -1,0 +1,17 @@
+doctype
+html
+  head
+    script(src="/javascripts/libs.js")
+    script(src="/javascripts/application.js")
+    block javascripts
+
+    link(rel="stylesheet", href="/stylesheets/libs.css")
+    link(rel="stylesheet", href="/stylesheets/application.css")
+    block stylesheets
+
+    block title
+      title TITLE
+
+  body
+    block content
+      h1 Hello World!

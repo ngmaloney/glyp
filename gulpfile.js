@@ -3,16 +3,17 @@ var bowerfiles = require("main-bower-files");
 var browsersync = require("browser-sync");
 var concat = require("gulp-concat");
 var jade = require("gulp-jade");
+var less = require("gulp-less");
 var uglify = require("gulp-uglify");
 
 var paths = {
-  templates: ["src/*.jade", "src/templates/*.jade"],
+  templates: ["src/views/*.jade"],
   javascripts: ["src/javascripts/*"],
   stylesheets: ["src/stylesheets/*"]
 }
 
 gulp.task("templates", function() {
-  gulp.src("src/*.jade")
+  gulp.src("src/views/*.jade")
     .pipe(jade({
       pretty: true
     }))
@@ -29,7 +30,7 @@ gulp.task("javascript", function() {
   .pipe(gulp.dest("build/javascripts"));
 
   //Application JS
-  gulp.src("src/javascripts/*.js")
+  gulp.src("src/javascripts/*.less")
     .pipe(concat("application.js"))
     .pipe(uglify())
     .pipe(gulp.dest("build/javascripts"));
@@ -38,13 +39,15 @@ gulp.task("javascript", function() {
 gulp.task("css", function() {
   //Bower CSS
   gulp.src(bowerfiles({
-    filter: /\.css$/i
+    filter: /\.less$/i
   }))
+  .pipe(less())
   .pipe(concat("libs.css"))
   .pipe(gulp.dest("build/stylesheets"));
 
   //Application css
   gulp.src("src/stylesheets/*.css")
+    .pipe(less())
     .pipe(concat("application.css"))
     .pipe(gulp.dest("build/stylesheets"));
 });

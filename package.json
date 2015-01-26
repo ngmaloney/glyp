@@ -1,5 +1,5 @@
 {
-  "name": "glyp",
+  "name": "flyp",
   "version": "1.0.0",
   "description": "Glyp - A simple static site template",
   "main": "index.js",
@@ -11,7 +11,10 @@
     "gulp-concat": "^2.4.2",
     "gulp-jade": "^0.10.0",
     "gulp-less": "^2.0.1",
+    "gulp-plumber": "^0.6.6",
+    "gulp-s3": "^0.3.0",
     "gulp-uglify": "^1.0.2",
+    "gulp-util": "^3.0.1",
     "main-bower-files": "^2.4.1"
   },
   "devDependencies": {},
